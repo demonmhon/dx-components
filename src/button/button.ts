@@ -7,10 +7,16 @@ export class DxButton extends LitElement {
   type?: string = 'button';
 
   static override styles = css`
-    :host { display: inline-block; }
-  `
+    :host {
+      display: inline-block;
+    }
+  `;
+
+  private onClick(e: Event): void {
+    e.stopPropagation();
+  }
 
   override render() {
-    return html`<button><slot></slot></button>`;
+    return html`<button @click="${this.onClick}"><slot></slot></button>`;
   }
 }

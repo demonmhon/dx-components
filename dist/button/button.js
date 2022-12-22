@@ -11,12 +11,17 @@ let DxButton = class DxButton extends LitElement {
         super(...arguments);
         this.type = 'button';
     }
+    onClick(e) {
+        e.stopPropagation();
+    }
     render() {
-        return html `<button><slot></slot></button>`;
+        return html `<button @click="${this.onClick}"><slot></slot></button>`;
     }
 };
 DxButton.styles = css `
-    :host { display: inline-block; }
+    :host {
+      display: inline-block;
+    }
   `;
 __decorate([
     property()
