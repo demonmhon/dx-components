@@ -10,7 +10,8 @@
     "format": "prettier --check \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --write",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "lint": "eslint -c .eslintrc \"src/**/*.ts\""
   },
   "keywords": [
     "web-components",
@@ -21,12 +22,16 @@
   "author": "thanawat.petchsri@gmial.com",
   "license": "ISC",
   "dependencies": {
+    "eslint-plugin-prettier": "^4.2.1",
     "lit": "^2.5.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "@web/dev-server": "^0.1.35",
     "@web/dev-server-esbuild": "^0.3.3",
+    "eslint": "^8.30.0",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
   }
