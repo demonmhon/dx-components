@@ -7,9 +7,18 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../dist/index.js"></script>
+    <link rel="stylesheet" media="screen" href="./styles.css">
   </head>
   <body>
+    <div class="container">
     <h1>DX Components</h1>
-    <dx-button>DX Button</dx-button>
+    <section class="component component-dx-button">
+      <h1>DX Button</h1>
+      <dx-button>DX Button</dx-button>
+    </section>
+    <section class="component component-dx-date-info">
+      <dx-date-info></dx-date-info>
+    </section>
+  </div>
   </body>
 </html>

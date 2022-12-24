@@ -1,3 +1,4 @@
 import { DxButton } from './button/button';
-export { DxButton };
+import { DxDateInfo } from './date-info/date-info';
+export { DxButton, DxDateInfo };
 //# sourceMappingURL=index.js.map
