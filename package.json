@@ -4,7 +4,6 @@
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "type": "module",
   "scripts": {
     "start": "web-dev-server",
     "format": "prettier --check \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --write",
