@@ -8,8 +8,8 @@
     "start": "web-dev-server",
     "format": "prettier --check \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --write",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch",
     "build": "tsc",
-    "build:watch": "tsc --watch",
     "lint": "eslint -c .eslintrc \"src/**/*.ts\"",
     "prepare": "husky install"
   },
