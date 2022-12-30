@@ -1,7 +1,15 @@
 :root,
 [data-dx-theme='light'],
 [data-dx-theme='dark'] {
+  --dx-space-xs: 2px;
+  --dx-space-m: 5px;
+  --dx-space-l: 10px;
+  --dx-space-xl: 16px;
+
   --dx-color-info: #4f83cc;
   --dx-color-warning: #fbc02d;
   --dx-color-error: #e53935;
+
+  --dx-tag-bg: #222222;
+  --dx-tag-text: #ffffff;
 }

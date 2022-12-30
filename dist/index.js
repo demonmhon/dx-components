@@ -15,7 +15,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
 function __decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof undefined === "function") r = undefined(decorators, target, key, desc);
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 }
@@ -150,8 +150,10 @@ DxMessageBlock.styles = i$2 `
       color: var(--dx-color-info);
     }
     [data-type='warning'] {
+      color: var(--dx-color-warning);
     }
     [data-type='error'] {
+      color: var(--dx-color-error);
     }
   `;
 __decorate([
@@ -161,4 +163,28 @@ DxMessageBlock = __decorate([
     e$1('dx-message-block')
 ], DxMessageBlock);
 
-export { DxButton, DxDateInfo, DxMessageBlock };
+let DxTag = class DxTag extends s {
+    render() {
+        return y ` <span><slot></slot></span> `;
+    }
+};
+DxTag.styles = i$2 `
+    :host {
+      display: inline-block;
+      margin-right: 1px;
+      margin-bottom: 1px;
+      padding: var(--dx-space-xs) var(--dx-space-l);
+      
+      color: var(--dx-tag-text);
+      font-size: .8rem;
+      
+      background-color: var(--dx-tag-bg);
+      border: solid 1px transparent;
+      border-radius: 2rem;
+    }
+  `;
+DxTag = __decorate([
+    e$1('dx-tag')
+], DxTag);
+
+export { DxButton, DxDateInfo, DxMessageBlock, DxTag };

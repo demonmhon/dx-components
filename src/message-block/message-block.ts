@@ -31,8 +31,10 @@ export class DxMessageBlock extends LitElement {
       color: var(--dx-color-info);
     }
     [data-type='warning'] {
+      color: var(--dx-color-warning);
     }
     [data-type='error'] {
+      color: var(--dx-color-error);
     }
   `;
 

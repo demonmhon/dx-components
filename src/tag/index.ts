@@ -1,0 +1,1 @@
+export { DxTag } from './tag';

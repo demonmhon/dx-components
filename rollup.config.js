@@ -1,6 +1,5 @@
 import summary from 'rollup-plugin-summary';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import { copy } from '@web/rollup-plugin-copy';
 
@@ -17,7 +16,6 @@ export default {
   },
   plugins: [
     typescript(),
-    replace({'Reflect.decorate': 'undefined', preventAssignment: true }),
     nodeResolve(),
     copy({ patterns: '**/*.{css,jpg,json,svg}', rootDir: 'src' }),
     summary(),
