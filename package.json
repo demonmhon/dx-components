@@ -8,10 +8,11 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "scripts": {
-    "start": "web-dev-server",
+    "start": "concurrently -n BUILD,SERVE \"npm run dev\" \"npm run dev:server\" -c \"bgBlueBright.bold,bgBlue.bold\"",
     "format": "prettier --check \"src/**/*.(js|jsx|ts|tsx|css|scss)\" --write",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rimraf dist && rollup -c rollup.config.js --watch",
+    "dev:server": "web-dev-server",
     "build": "rimraf dist && rollup -c rollup.config.js",
     "lint": "eslint -c .eslintrc \"src/**/*.ts\"",
     "prepare": "husky install"
@@ -37,6 +38,7 @@
     "@web/dev-server": "^0.1.35",
     "@web/dev-server-esbuild": "^0.3.3",
     "@web/rollup-plugin-copy": "^0.3.0",
+    "concurrently": "^7.6.0",
     "eslint": "^8.30.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
