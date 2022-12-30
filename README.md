@@ -11,6 +11,14 @@ $ npm install
 ```
 
 ```bash
-$ npm run build:watch
+$ npm run dev
 $ npm start
+```
+
+# Build
+
+Build distribution using [Rollup](https://rollupjs.org/guide/en/)
+
+```bash
+$ npm run build
 ```

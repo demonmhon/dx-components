@@ -1,0 +1,7 @@
+:root,
+[data-dx-theme='light'],
+[data-dx-theme='dark'] {
+  --dx-color-info: #4f83cc;
+  --dx-color-warning: #fbc02d;
+  --dx-color-error: #e53935;
+}

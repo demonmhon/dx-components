@@ -28,6 +28,7 @@ export class DxMessageBlock extends LitElement {
       content: '';
     }
     [data-type='info'] {
+      color: var(--dx-color-info);
     }
     [data-type='warning'] {
     }
