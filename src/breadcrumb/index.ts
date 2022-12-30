@@ -1,0 +1,1 @@
+export { DxBreadcrumb } from './breadcrumb';

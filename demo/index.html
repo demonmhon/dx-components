@@ -19,6 +19,30 @@
       <dx-button>DX Button</dx-button>
     </section>
 
+    <section class="component component-dx-breadcrumb">
+      <h2>DX Breadcrumb</h2>
+      <div>
+        <dx-breadcrumb id="dx-breadcrumb-1"></dx-breadcrumb>
+        <script>
+          var dxe = document.getElementById('dx-breadcrumb-1')
+          dxe.data = [
+            {
+              title: 'Home',
+              link: '#'
+            },
+            {
+              title: 'Documents',
+              link: '#'
+            },
+            {
+              title: '2022',
+              link: '#'
+            },
+          ]
+        </script>
+      </div>
+    </section>
+
     <section class="component component-dx-date-info">
       <h2>DX Date Info</h2>
       <dx-date-info></dx-date-info>
@@ -30,6 +54,7 @@
       <dx-message-block type="info">This is an info block.</dx-message-block>
       <dx-message-block type="warning">This is an warning block.</dx-message-block>
       <dx-message-block type="error">This is an error block.</dx-message-block>
+      <dx-message-block>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt nisi non gravida hendrerit. Donec et nibh eu nibh porttitor facilisis eget vel ligula. Cras sit amet libero et nunc iaculis facilisis. Nam semper lacus non ipsum commodo pretium. Aliquam dapibus mauris ac pellentesque fringilla. </dx-message-block>
     </section>
 
     <section class="component component-dx-tag">

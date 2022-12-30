@@ -90,6 +90,65 @@ DxButton = __decorate([
     e$1('dx-button')
 ], DxButton);
 
+let DxBreadcrumb = class DxBreadcrumb extends s {
+    constructor() {
+        super(...arguments);
+        this.data = [];
+    }
+    renderList(data) {
+        const items = data.map((item, i) => {
+            const isLast = i === data.length - 1;
+            const label = !isLast && item.link
+                ? y `<a href="${item.link}">${item.title}</a>`
+                : item.title;
+            return y `<li><span>${label}</span></li>`;
+        });
+        return y `<ul>
+      ${items}
+    </ul>`;
+    }
+    render() {
+        return y ` <div>${this.renderList(this.data)}</div> `;
+    }
+};
+DxBreadcrumb.styles = i$2 `
+    :host {
+      display: block;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      display: block;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    li:not(:first-child)::before {
+      display: inline-block;
+      margin: 0 var(--dx-space-m);
+
+      content: var(--dx-breadcrumb-separator);
+    }
+
+    a {
+      color: var(--dx-link-color);
+      text-decoration: none;
+    }
+  `;
+__decorate([
+    e()
+], DxBreadcrumb.prototype, "data", void 0);
+DxBreadcrumb = __decorate([
+    e$1('dx-breadcrumb')
+], DxBreadcrumb);
+
 let DxDateInfo = class DxDateInfo extends s {
     constructor() {
         super(...arguments);
@@ -147,13 +206,13 @@ DxMessageBlock.styles = i$2 `
       content: '';
     }
     [data-type='info'] {
-      color: var(--dx-color-info);
+      color: var(--dx-info-color);
     }
     [data-type='warning'] {
-      color: var(--dx-color-warning);
+      color: var(--dx-warning-color);
     }
     [data-type='error'] {
-      color: var(--dx-color-error);
+      color: var(--dx-error-color);
     }
   `;
 __decorate([
@@ -174,10 +233,10 @@ DxTag.styles = i$2 `
       margin-right: 1px;
       margin-bottom: 1px;
       padding: var(--dx-space-xs) var(--dx-space-l);
-      
+
       color: var(--dx-tag-text);
-      font-size: .8rem;
-      
+      font-size: 0.75rem;
+
       background-color: var(--dx-tag-bg);
       border: solid 1px transparent;
       border-radius: 2rem;
@@ -187,4 +246,4 @@ DxTag = __decorate([
     e$1('dx-tag')
 ], DxTag);
 
-export { DxButton, DxDateInfo, DxMessageBlock, DxTag };
+export { DxBreadcrumb, DxButton, DxDateInfo, DxMessageBlock, DxTag };

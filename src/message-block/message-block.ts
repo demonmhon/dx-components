@@ -28,13 +28,13 @@ export class DxMessageBlock extends LitElement {
       content: '';
     }
     [data-type='info'] {
-      color: var(--dx-color-info);
+      color: var(--dx-info-color);
     }
     [data-type='warning'] {
-      color: var(--dx-color-warning);
+      color: var(--dx-warning-color);
     }
     [data-type='error'] {
-      color: var(--dx-color-error);
+      color: var(--dx-error-color);
     }
   `;
 

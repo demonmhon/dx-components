@@ -30,3 +30,13 @@ img {
   max-width: 600px;
   margin: 0 auto;
 }
+section {
+  margin-bottom: 3rem;
+}
+h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+h2 {
+  margin-bottom: 1rem;
+}

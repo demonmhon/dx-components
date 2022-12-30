@@ -10,10 +10,15 @@ Install dependencies, run build command and dev server
 $ npm install
 ```
 
-Run multiple commands with [concurrently](https://www.npmjs.com/package/concurrently)
+Run multiple commands with [concurrently](https://www.npmjs.com/package/concurrently). Or run command separately session.
 
 ```bash
 $ npm start
+```
+
+```bash
+$ npm run dev
+$ npm run dev:server
 ```
 
 # Build
