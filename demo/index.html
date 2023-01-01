@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>DX Components</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../dist/index.js"></script>
-    <link rel="stylesheet" media="screen" href="./styles.css">
-    <link rel="stylesheet" media="screen" href="../dist/themes/themes.css">
-  </head>
-  <body>
-    <div class="container">
+
+<head>
+  <meta charset="utf-8" />
+  <title>DX Components</title>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/lit/polyfill-support.js"></script>
+  <script type="module" src="../dist/index.js"></script>
+  <link rel="stylesheet" media="screen" href="./styles.css">
+  <link rel="stylesheet" media="screen" href="../dist/themes/themes.css">
+</head>
+
+<body>
+  <div class="container">
     <h1>DX Components</h1>
 
     <section class="component component-dx-button">
@@ -43,6 +45,17 @@
       </div>
     </section>
 
+    <section class="component component-dx-checkbox">
+      <h2>DX Checkbox</h2>
+      <div>
+        <dx-checkbox id="dx-checkbox-1">Checkbox label</dx-checkbox>
+        <script>
+          var dxcb = document.getElementById('dx-checkbox-1')
+          dxcb.onChange = (e) => console.log(`Checked: ${e.target.checked}`)
+        </script>
+      </div>
+    </section>
+
     <section class="component component-dx-date-info">
       <h2>DX Date Info</h2>
       <dx-date-info></dx-date-info>
@@ -54,7 +67,10 @@
       <dx-message-block type="info">This is an info block.</dx-message-block>
       <dx-message-block type="warning">This is an warning block.</dx-message-block>
       <dx-message-block type="error">This is an error block.</dx-message-block>
-      <dx-message-block>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt nisi non gravida hendrerit. Donec et nibh eu nibh porttitor facilisis eget vel ligula. Cras sit amet libero et nunc iaculis facilisis. Nam semper lacus non ipsum commodo pretium. Aliquam dapibus mauris ac pellentesque fringilla. </dx-message-block>
+      <dx-message-block>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt nisi non gravida
+        hendrerit. Donec et nibh eu nibh porttitor facilisis eget vel ligula. Cras sit amet libero et nunc iaculis
+        facilisis. Nam semper lacus non ipsum commodo pretium. Aliquam dapibus mauris ac pellentesque fringilla.
+      </dx-message-block>
     </section>
 
     <section class="component component-dx-tag">
@@ -64,5 +80,6 @@
       </div>
     </section>
   </div>
-  </body>
+</body>
+
 </html>

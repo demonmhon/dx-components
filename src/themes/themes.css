@@ -11,8 +11,12 @@
   --dx-error-color: #e53935;
   --dx-link-color: #4f83cc;
   --dx-link-hover-color: #4f83cc;
+  --dx-border-color: #666666;
 
   --dx-breadcrumb-separator: '/';
+
+  --dx-checkbox-size: 1em;
+  --dx-checkbox-img: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjIwIDYgOSAxNyA0IDEyIj48L3BvbHlsaW5lPjwvc3ZnPg==');
 
   --dx-tag-bg: #222222;
   --dx-tag-text: #ffffff;

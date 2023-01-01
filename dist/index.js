@@ -149,6 +149,82 @@ DxBreadcrumb = __decorate([
     e$1('dx-breadcrumb')
 ], DxBreadcrumb);
 
+let DxCheckbox = class DxCheckbox extends s {
+    constructor() {
+        super(...arguments);
+        // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+        this.onChange = (_e) => { };
+    }
+    _onChange(e) {
+        this.onChange(e);
+    }
+    render() {
+        return y `
+      <span>
+        <label>
+          <input type="checkbox" @click=${this._onChange} />
+          <span class="ui"></span>
+          <slot></slot>
+        </label>
+      </span>
+    `;
+    }
+};
+DxCheckbox.styles = i$2 `
+    :host {
+      display: inline-block;
+    }
+
+    input {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+    }
+
+    .ui {
+      position: relative;
+      display: inline-block;
+      width: var(--dx-checkbox-size);
+      height: var(--dx-checkbox-size);
+      vertical-align: middle;
+      border: solid 1px var(--dx-border-color);
+      border-radius: $border-radius;
+      cursor: pointer;
+    }
+
+    .ui::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: none;
+      width: var(--dx-checkbox-size);
+      height: var(--dx-checkbox-size);
+      background-color: currentColor;
+      transform: translate(-50%, -50%);
+      content: '';
+      mask-image: var(--dx-checkbox-img);
+      mask-size: var(--dx-checkbox-size);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: var(--dx-checkbox-img);
+      -webkit-mask-size: var(--dx-checkbox-size);
+      -webkit-mask-position: center;
+    }
+
+    input:checked + .ui::before {
+      display: block;
+    }
+  `;
+__decorate([
+    e()
+    // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+], DxCheckbox.prototype, "onChange", void 0);
+DxCheckbox = __decorate([
+    e$1('dx-checkbox')
+], DxCheckbox);
+
 let DxDateInfo = class DxDateInfo extends s {
     constructor() {
         super(...arguments);
@@ -246,4 +322,4 @@ DxTag = __decorate([
     e$1('dx-tag')
 ], DxTag);
 
-export { DxBreadcrumb, DxButton, DxDateInfo, DxMessageBlock, DxTag };
+export { DxBreadcrumb, DxButton, DxCheckbox, DxDateInfo, DxMessageBlock, DxTag };
