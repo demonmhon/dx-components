@@ -1,41 +1,45 @@
 import { LitElement, TemplateResult, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { GlobalStyles } from '../global-styles';
 import { DxBreadcrumbItem } from './breadcrumb.type';
 
 @customElement('dx-breadcrumb')
 export class DxBreadcrumb extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-    }
+  static override styles = [
+    GlobalStyles,
+    css`
+      :host {
+        display: block;
+      }
 
-    ul,
-    li {
-      margin: 0;
-      padding: 0;
-    }
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
 
-    ul {
-      display: block;
-    }
+      ul {
+        display: block;
+      }
 
-    li {
-      display: inline-block;
-    }
+      li {
+        display: inline-block;
+      }
 
-    li:not(:first-child)::before {
-      display: inline-block;
-      margin: 0 var(--dx-space-m);
+      li:not(:first-child)::before {
+        display: inline-block;
+        margin: 0 var(--dx-space-m);
 
-      content: var(--dx-breadcrumb-separator);
-    }
+        content: var(--dx-breadcrumb-separator);
+      }
 
-    a {
-      color: var(--dx-link-color);
-      text-decoration: none;
-    }
-  `;
+      a {
+        color: var(--dx-link-color);
+        text-decoration: none;
+      }
+    `,
+  ];
 
   @property()
   data: DxBreadcrumbItem[] = [];

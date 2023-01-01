@@ -1,59 +1,83 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { GlobalStyles } from '../global-styles';
+
 @customElement('dx-checkbox')
 export class DxCheckbox extends LitElement {
   @property()
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (_e: Event) => {};
 
-  static override styles = css`
-    :host {
-      display: inline-block;
-    }
+  static override styles = [
+    GlobalStyles,
+    css`
+      label {
+        display: inline-flex;
+        box-sizing: border-box;
+      }
 
-    input {
-      position: absolute;
-      left: 0;
-      z-index: -1;
-      opacity: 0;
-    }
+      input {
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+      }
 
-    .ui {
-      position: relative;
-      display: inline-block;
-      width: var(--dx-checkbox-size);
-      height: var(--dx-checkbox-size);
-      vertical-align: middle;
-      border: solid 1px var(--dx-border-color);
-      border-radius: $border-radius;
-      cursor: pointer;
-    }
+      .ui,
+      .label {
+        vertical-align: middle;
+      }
+      .ui {
+        position: relative;
 
-    .ui::before {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      display: none;
-      width: var(--dx-checkbox-size);
-      height: var(--dx-checkbox-size);
-      background-color: currentColor;
-      transform: translate(-50%, -50%);
-      content: '';
-      mask-image: var(--dx-checkbox-img);
-      mask-size: var(--dx-checkbox-size);
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-image: var(--dx-checkbox-img);
-      -webkit-mask-size: var(--dx-checkbox-size);
-      -webkit-mask-position: center;
-    }
+        display: inline-block;
+        width: var(--dx-checkbox-size);
+        height: var(--dx-checkbox-size);
 
-    input:checked + .ui::before {
-      display: block;
-    }
-  `;
+        vertical-align: middle;
+        border: solid 1px var(--dx-border-color);
+        border-radius: var(--dx-checkbox-border-radius);
+        cursor: pointer;
+      }
+
+      .ui::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        display: none;
+        width: var(--dx-checkbox-size);
+        height: var(--dx-checkbox-size);
+
+        background-color: currentColor;
+        transform: translate(-50%, -50%);
+        content: '';
+
+        mask-image: var(--dx-checkbox-img);
+        mask-size: var(--dx-checkbox-size);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-image: var(--dx-checkbox-img);
+        -webkit-mask-size: var(--dx-checkbox-size);
+        -webkit-mask-position: center;
+      }
+
+      .label {
+        flex: 1;
+        padding-left: var(--dx-space-m);
+      }
+
+      input:checked + .ui::before {
+        display: block;
+      }
+
+      input:focus + .ui {
+        box-shadow: 0 0 0 2px var(--dx-outline-color);
+      }
+    `,
+  ];
 
   private _onChange(e: Event) {
     this.onChange(e);
@@ -61,13 +85,11 @@ export class DxCheckbox extends LitElement {
 
   override render() {
     return html`
-      <span>
-        <label>
-          <input type="checkbox" @click=${this._onChange} />
-          <span class="ui"></span>
-          <slot></slot>
-        </label>
-      </span>
+      <label>
+        <input type="checkbox" @click=${this._onChange} />
+        <span class="ui"></span>
+        <span class="label"><slot></slot></span>
+      </label>
     `;
   }
 }

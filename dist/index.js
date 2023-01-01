@@ -66,6 +66,18 @@ const i=(i,e)=>"method"===e.kind&&e.descriptor&&!("value"in e.descriptor)?{...e,
  * SPDX-License-Identifier: BSD-3-Clause
  */var n;null!=(null===(n=window.HTMLSlotElement)||void 0===n?void 0:n.prototype.assignedElements)?(o,n)=>o.assignedElements(n):(o,n)=>o.assignedNodes(n).filter((o=>o.nodeType===Node.ELEMENT_NODE));
 
+const GlobalStyles = i$2 `
+  :host {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+`;
+
 let DxButton = class DxButton extends s {
     constructor() {
         super(...arguments);
@@ -78,11 +90,14 @@ let DxButton = class DxButton extends s {
         return y `<button @click="${this.onClick}"><slot></slot></button>`;
     }
 };
-DxButton.styles = i$2 `
-    :host {
-      display: inline-block;
-    }
-  `;
+DxButton.styles = [
+    GlobalStyles,
+    i$2 `
+      :host {
+        display: inline-block;
+      }
+    `,
+];
 __decorate([
     e()
 ], DxButton.prototype, "type", void 0);
@@ -111,37 +126,40 @@ let DxBreadcrumb = class DxBreadcrumb extends s {
         return y ` <div>${this.renderList(this.data)}</div> `;
     }
 };
-DxBreadcrumb.styles = i$2 `
-    :host {
-      display: block;
-    }
+DxBreadcrumb.styles = [
+    GlobalStyles,
+    i$2 `
+      :host {
+        display: block;
+      }
 
-    ul,
-    li {
-      margin: 0;
-      padding: 0;
-    }
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
 
-    ul {
-      display: block;
-    }
+      ul {
+        display: block;
+      }
 
-    li {
-      display: inline-block;
-    }
+      li {
+        display: inline-block;
+      }
 
-    li:not(:first-child)::before {
-      display: inline-block;
-      margin: 0 var(--dx-space-m);
+      li:not(:first-child)::before {
+        display: inline-block;
+        margin: 0 var(--dx-space-m);
 
-      content: var(--dx-breadcrumb-separator);
-    }
+        content: var(--dx-breadcrumb-separator);
+      }
 
-    a {
-      color: var(--dx-link-color);
-      text-decoration: none;
-    }
-  `;
+      a {
+        color: var(--dx-link-color);
+        text-decoration: none;
+      }
+    `,
+];
 __decorate([
     e()
 ], DxBreadcrumb.prototype, "data", void 0);
@@ -160,63 +178,83 @@ let DxCheckbox = class DxCheckbox extends s {
     }
     render() {
         return y `
-      <span>
-        <label>
-          <input type="checkbox" @click=${this._onChange} />
-          <span class="ui"></span>
-          <slot></slot>
-        </label>
-      </span>
+      <label>
+        <input type="checkbox" @click=${this._onChange} />
+        <span class="ui"></span>
+        <span class="label"><slot></slot></span>
+      </label>
     `;
     }
 };
-DxCheckbox.styles = i$2 `
-    :host {
-      display: inline-block;
-    }
+DxCheckbox.styles = [
+    GlobalStyles,
+    i$2 `
+      label {
+        display: inline-flex;
+        box-sizing: border-box;
+      }
 
-    input {
-      position: absolute;
-      left: 0;
-      z-index: -1;
-      opacity: 0;
-    }
+      input {
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+      }
 
-    .ui {
-      position: relative;
-      display: inline-block;
-      width: var(--dx-checkbox-size);
-      height: var(--dx-checkbox-size);
-      vertical-align: middle;
-      border: solid 1px var(--dx-border-color);
-      border-radius: $border-radius;
-      cursor: pointer;
-    }
+      .ui,
+      .label {
+        vertical-align: middle;
+      }
+      .ui {
+        position: relative;
 
-    .ui::before {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      display: none;
-      width: var(--dx-checkbox-size);
-      height: var(--dx-checkbox-size);
-      background-color: currentColor;
-      transform: translate(-50%, -50%);
-      content: '';
-      mask-image: var(--dx-checkbox-img);
-      mask-size: var(--dx-checkbox-size);
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-image: var(--dx-checkbox-img);
-      -webkit-mask-size: var(--dx-checkbox-size);
-      -webkit-mask-position: center;
-    }
+        display: inline-block;
+        width: var(--dx-checkbox-size);
+        height: var(--dx-checkbox-size);
 
-    input:checked + .ui::before {
-      display: block;
-    }
-  `;
+        vertical-align: middle;
+        border: solid 1px var(--dx-border-color);
+        border-radius: var(--dx-checkbox-border-radius);
+        cursor: pointer;
+      }
+
+      .ui::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        display: none;
+        width: var(--dx-checkbox-size);
+        height: var(--dx-checkbox-size);
+
+        background-color: currentColor;
+        transform: translate(-50%, -50%);
+        content: '';
+
+        mask-image: var(--dx-checkbox-img);
+        mask-size: var(--dx-checkbox-size);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-image: var(--dx-checkbox-img);
+        -webkit-mask-size: var(--dx-checkbox-size);
+        -webkit-mask-position: center;
+      }
+
+      .label {
+        flex: 1;
+        padding-left: var(--dx-space-m);
+      }
+
+      input:checked + .ui::before {
+        display: block;
+      }
+
+      input:focus + .ui {
+        box-shadow: 0 0 0 2px var(--dx-outline-color);
+      }
+    `,
+];
 __decorate([
     e()
     // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
@@ -232,14 +270,13 @@ let DxDateInfo = class DxDateInfo extends s {
     }
     parseValue() {
         var _a;
-        console.log(this.value);
         return this.value ? (_a = this.value) === null || _a === void 0 ? void 0 : _a.toString() : '';
     }
     render() {
         return y `<span>${this.parseValue()}</span>`;
     }
 };
-DxDateInfo.styles = i$2 ``;
+DxDateInfo.styles = [GlobalStyles, i$2 ``];
 __decorate([
     e()
 ], DxDateInfo.prototype, "value", void 0);
@@ -262,35 +299,38 @@ let DxMessageBlock = class DxMessageBlock extends s {
         return y ` <div data-type="${this.getType()}"><slot></slot></div> `;
     }
 };
-DxMessageBlock.styles = i$2 `
-    :host {
-      display: block;
-    }
-    [data-type] {
-      position: relative;
-      padding: 4px 4px 4px 8px;
-      margin-bottom: 1px;
-      font-size: 0.75rem;
-    }
-    [data-type]::before {
-      position: absolute;
-      background-color: currentColor;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 4px;
-      content: '';
-    }
-    [data-type='info'] {
-      color: var(--dx-info-color);
-    }
-    [data-type='warning'] {
-      color: var(--dx-warning-color);
-    }
-    [data-type='error'] {
-      color: var(--dx-error-color);
-    }
-  `;
+DxMessageBlock.styles = [
+    GlobalStyles,
+    i$2 `
+      :host {
+        display: block;
+      }
+      [data-type] {
+        position: relative;
+        padding: 4px 4px 4px 8px;
+        margin-bottom: 1px;
+        font-size: 0.75rem;
+      }
+      [data-type]::before {
+        position: absolute;
+        background-color: currentColor;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        content: '';
+      }
+      [data-type='info'] {
+        color: var(--dx-info-color);
+      }
+      [data-type='warning'] {
+        color: var(--dx-warning-color);
+      }
+      [data-type='error'] {
+        color: var(--dx-error-color);
+      }
+    `,
+];
 __decorate([
     e()
 ], DxMessageBlock.prototype, "type", void 0);
@@ -303,21 +343,24 @@ let DxTag = class DxTag extends s {
         return y ` <span><slot></slot></span> `;
     }
 };
-DxTag.styles = i$2 `
-    :host {
-      display: inline-block;
-      margin-right: 1px;
-      margin-bottom: 1px;
-      padding: var(--dx-space-xs) var(--dx-space-l);
+DxTag.styles = [
+    GlobalStyles,
+    i$2 `
+      :host {
+        display: inline-block;
+        margin-right: 1px;
+        margin-bottom: 1px;
+        padding: var(--dx-space-xs) var(--dx-space-l);
 
-      color: var(--dx-tag-text);
-      font-size: 0.75rem;
+        color: var(--dx-tag-text);
+        font-size: 0.75rem;
 
-      background-color: var(--dx-tag-bg);
-      border: solid 1px transparent;
-      border-radius: 2rem;
-    }
-  `;
+        background-color: var(--dx-tag-bg);
+        border: solid 1px transparent;
+        border-radius: 2rem;
+      }
+    `,
+];
 DxTag = __decorate([
     e$1('dx-tag')
 ], DxTag);
