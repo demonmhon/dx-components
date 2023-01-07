@@ -69,6 +69,7 @@ const i=(i,e)=>"method"===e.kind&&e.descriptor&&!("value"in e.descriptor)?{...e,
 const GlobalStyles = i$2 `
   :host {
     box-sizing: border-box;
+    font-size: var(--dx-font-size);
   }
 
   *,
@@ -296,7 +297,12 @@ let DxMessageBlock = class DxMessageBlock extends s {
         return this.type ? this.type : BlockType.Info;
     }
     render() {
-        return y ` <div data-type="${this.getType()}"><slot></slot></div> `;
+        return y `
+      <div data-type="${this.getType()}">
+        <div class="icon"></div>
+        <div class="message"><slot></slot></div>
+      </div>
+    `;
     }
 };
 DxMessageBlock.styles = [
@@ -306,10 +312,12 @@ DxMessageBlock.styles = [
         display: block;
       }
       [data-type] {
+        display: flex;
         position: relative;
         padding: 4px 4px 4px 8px;
         margin-bottom: 1px;
         font-size: 0.75rem;
+        border: solid 1px currentColor;
       }
       [data-type]::before {
         position: absolute;
@@ -328,6 +336,44 @@ DxMessageBlock.styles = [
       }
       [data-type='error'] {
         color: var(--dx-error-color);
+      }
+      .icon {
+        position: relative;
+        
+        display: inline-block;
+        width: var(--dx-message-icon-size);
+        height: var(--dx-message-icon-size);
+        margin-right: var(--dx-space-m);
+      }
+      .message {
+        flex: 1;
+        padding-top: calc((var(--dx-message-icon-size) - var(--dx-font-size)) / 2);
+      }
+      .icon::before {
+        display: block;
+        width: var(--dx-message-icon-size);
+        height: var(--dx-message-icon-size);
+
+        background-color: currentColor;
+
+        content: '';
+
+        mask-image: var(--dx-message-info-icon);
+        mask-size: var(--dx-message-icon-size);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-image: var(--dx-message-info-icon);
+        -webkit-mask-size: var(--dx-message-icon-size);
+        -webkit-mask-position: center;
+      }
+      [data-type='warning'] .icon::before {
+        mask-image: var(--dx-message-warn-icon);
+        -webkit-mask-image: var(--dx-message-warn-icon);
+      }
+      [data-type='error'] .icon::before {
+        mask-image: var(--dx-message-error-icon);
+        -webkit-mask-image: var(--dx-message-error-icon);
       }
     `,
 ];
