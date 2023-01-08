@@ -1,12 +1,18 @@
 :root,
 [data-dx-theme='light'],
 [data-dx-theme='dark'] {
-  --dx-font-size: 1em;
-  
+  --dx-font-size: 1rem;
+
   --dx-space-xs: 2px;
   --dx-space-m: 5px;
   --dx-space-l: 10px;
   --dx-space-xl: 16px;
+
+  --dx-transition: 0.5s;
+  --dx-transition-faster: 0.25s;
+  --dx-transition-fastest: 0.15s;
+  --dx-transition-slower: 0.7s;
+  --dx-transition-slowest: 0.85s;
 
   --dx-info-color: #808080;
   --dx-warning-color: #666666;
@@ -15,6 +21,10 @@
   --dx-link-hover-color: #4f83cc;
   --dx-border-color: #666666;
   --dx-outline-color: rgba(102, 102, 102, 0.25);
+
+  --dx-button-bg: #333333;
+  --dx-button-bg-hover: #1a1a1a;
+  --dx-button-text: #ffffff;
 
   --dx-breadcrumb-separator: '/';
 
@@ -27,6 +37,6 @@
   --dx-message-warn-icon:  url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIj48L2NpcmNsZT48bGluZSB4MT0iMTUiIHkxPSI5IiB4Mj0iOSIgeTI9IjE1Ij48L2xpbmU+PGxpbmUgeDE9IjkiIHkxPSI5IiB4Mj0iMTUiIHkyPSIxNSI+PC9saW5lPjwvc3ZnPg==');
   --dx-message-error-icon:  url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMC4yOSAzLjg2TDEuODIgMThhMiAyIDAgMCAwIDEuNzEgM2gxNi45NGEyIDIgMCAwIDAgMS43MS0zTDEzLjcxIDMuODZhMiAyIDAgMCAwLTMuNDIgMHoiPjwvcGF0aD48bGluZSB4MT0iMTIiIHkxPSI5IiB4Mj0iMTIiIHkyPSIxMyI+PC9saW5lPjxsaW5lIHgxPSIxMiIgeTE9IjE3IiB4Mj0iMTIuMDEiIHkyPSIxNyI+PC9saW5lPjwvc3ZnPg==');
 
-  --dx-tag-bg: #262626;
+  --dx-tag-bg: #333333;
   --dx-tag-text: #ffffff;
 }

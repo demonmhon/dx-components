@@ -97,6 +97,29 @@ DxButton.styles = [
       :host {
         display: inline-block;
       }
+
+      button {
+        background-color: var(--dx-button-bg);
+        border: solid 1px transparent;
+        border-radius: 2rem;
+
+        color: var(--dx-button-text);
+        margin-right: 1px;
+        margin-bottom: 1px;
+        padding: var(--dx-space-m) var(--dx-space-xl);
+
+        transition-duration: var(--dx-transition-fastest);
+        transition-property: background-color box-shadow;
+      }
+
+      button:focus,
+      button:hover {
+        box-shadow: 0 0 0 3px var(--dx-outline-color);
+      }
+
+      button:hover {
+        background-color: var(--dx-button-bg-hover);
+      }
     `,
 ];
 __decorate([
@@ -217,6 +240,9 @@ DxCheckbox.styles = [
         border: solid 1px var(--dx-border-color);
         border-radius: var(--dx-checkbox-border-radius);
         cursor: pointer;
+
+        transition-duration: var(--dx-transition-fastest);
+        transition-property: box-shadow;
       }
 
       .ui::before {
@@ -252,7 +278,7 @@ DxCheckbox.styles = [
       }
 
       input:focus + .ui {
-        box-shadow: 0 0 0 2px var(--dx-outline-color);
+        box-shadow: 0 0 0 3px var(--dx-outline-color);
       }
     `,
 ];

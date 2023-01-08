@@ -39,6 +39,9 @@ export class DxCheckbox extends LitElement {
         border: solid 1px var(--dx-border-color);
         border-radius: var(--dx-checkbox-border-radius);
         cursor: pointer;
+
+        transition-duration: var(--dx-transition-fastest);
+        transition-property: box-shadow;
       }
 
       .ui::before {
@@ -74,7 +77,7 @@ export class DxCheckbox extends LitElement {
       }
 
       input:focus + .ui {
-        box-shadow: 0 0 0 2px var(--dx-outline-color);
+        box-shadow: 0 0 0 3px var(--dx-outline-color);
       }
     `,
   ];
