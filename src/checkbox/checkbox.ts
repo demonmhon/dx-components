@@ -24,14 +24,11 @@ export class DxCheckbox extends LitElement {
         opacity: 0;
       }
 
-      .ui,
-      .label {
-        vertical-align: middle;
-      }
-      .ui {
+      .control {
         position: relative;
 
-        display: inline-block;
+        display: inline-flex;
+        flex: 0 0 auto;
         width: var(--dx-checkbox-size);
         height: var(--dx-checkbox-size);
 
@@ -44,7 +41,7 @@ export class DxCheckbox extends LitElement {
         transition-property: box-shadow;
       }
 
-      .ui::before {
+      .control::before {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -72,11 +69,11 @@ export class DxCheckbox extends LitElement {
         padding-left: var(--dx-space-m);
       }
 
-      input:checked + .ui::before {
+      input:checked + .control::before {
         display: block;
       }
 
-      input:focus + .ui {
+      input:focus + .control {
         box-shadow: 0 0 0 3px var(--dx-outline-color);
       }
     `,
@@ -90,7 +87,7 @@ export class DxCheckbox extends LitElement {
     return html`
       <label>
         <input type="checkbox" @click=${this._onChange} />
-        <span class="ui"></span>
+        <span class="control"></span>
         <span class="label"><slot></slot></span>
       </label>
     `;

@@ -51,7 +51,7 @@ export class DxMessageBlock extends LitElement {
       }
       .message {
         flex: 1;
-        padding-top: calc((var(--dx-message-icon-size) - var(--dx-font-size)) / 2);
+        padding-top: calc((var(--dx-message-icon-size) - var(--dx-component-font-size)) / 2);
       }
       .icon::before {
         display: block;

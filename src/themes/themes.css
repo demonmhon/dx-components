@@ -1,7 +1,11 @@
 :root,
 [data-dx-theme='light'],
 [data-dx-theme='dark'] {
-  --dx-font-size: 1rem;
+  --dx-font-size: 14px;
+  --dx-line-height: 1.4;
+
+  --dx-component-font-size: 1rem;
+  --dx-component-line-height: 1.2;
 
   --dx-space-xs: 2px;
   --dx-space-m: 5px;
