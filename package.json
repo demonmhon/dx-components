@@ -23,8 +23,8 @@
     "typescript",
     "lit"
   ],
-  "author": "thanawat.petchsri@gmial.com",
-  "license": "ISC",
+  "author": "thanawat.petchsri@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "lit": "^2.5.0"
   },
