@@ -11,15 +11,21 @@
   <link rel="stylesheet" media="screen" href="./styles.css">
   <link rel="stylesheet" media="screen" href="../dist/themes/themes.css">
   <style>
-    body {
-      font-size: var(--dx-font-size);
-      line-height: var(--dx-line-height);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
-    }
   </style>
 </head>
 
 <body>
+  <div class="header">
+    <dx-button id="toggle-theme">Switch Theme</dx-button>
+    <script>
+      const toggleThemeBtn = document.getElementById('toggle-theme')
+      toggleThemeBtn.onClick = function(e) {
+        const currentTheme = document.documentElement.getAttribute('data-dx-theme')
+        const newTheme = (!currentTheme || currentTheme === 'light') ? 'dark': 'light'
+        document.documentElement.setAttribute('data-dx-theme', newTheme)
+      }
+    </script>
+  </div>
   <div class="container">
     <h1>DX Components</h1>
 

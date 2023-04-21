@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { GlobalStyles } from '../global-styles';
 
@@ -45,7 +44,7 @@ export class DxButton extends LitElement {
       :host([outline]) button {
         background-color: var(--dx-button-outline-bg);
         color: var(--dx-button-outline-text);
-        border-color: var(--dx-button-outline-border=color);
+        border-color: var(--dx-button-outline-border-color);
       }
     `,
   ];

@@ -1,10 +1,20 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
+
+  --header-bg-color: #eeeeee;
+}
+
+html[data-dx-theme="dark"] {
+  --header-bg-color: #111111;
 }
 
 body {
-  font-family: sans-serif;
+  font-size: var(--dx-font-size);
+  color: var( --dx-font-color);
+  line-height: var(--dx-line-height);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+  background-color: var(--dx-document-background);
 }
 
 *,
@@ -54,4 +64,11 @@ h1 {
 
 h2 {
   margin-bottom: 1rem;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  background-color: var( --header-bg-color);
 }

@@ -126,7 +126,7 @@ DxButton.styles = [
       :host([outline]) button {
         background-color: var(--dx-button-outline-bg);
         color: var(--dx-button-outline-text);
-        border-color: var(--dx-button-outline-border=color);
+        border-color: var(--dx-button-outline-border-color);
       }
     `,
 ];

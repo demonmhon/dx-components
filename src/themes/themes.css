@@ -3,6 +3,8 @@
 [data-dx-theme='dark'] {
   --dx-font-size: 14px;
   --dx-line-height: 1.4;
+  --dx-font-color: #111111;
+  --dx-document-background: #ffffff;
 
   --dx-component-font-size: 1rem;
   --dx-component-line-height: 1.2;
@@ -52,13 +54,15 @@
 }
 
 [data-dx-theme='light'] {
-  --dx-button-outline-bg: #ffffff;
-  --dx-button-outline-bg-hover: #1a1a1a;
-  --dx-button-outline-text: #333333;
 }
 
 [data-dx-theme='dark'] {
-  --dx-button-outline-bg: #ffffff;
-  --dx-button-outline-bg-hover: #1a1a1a;
-  --dx-button-outline-text: #333333;
+  --dx-font-color: #aaaaaa;
+  --dx-document-background: #222222;
+  
+  --dx-button-outline-bg: transparent;
+  --dx-button-outline-text: #ffffff;
+  --dx-button-outline-border-color: #444444;
+
+  --dx-message-border-color: #444444;
 }
