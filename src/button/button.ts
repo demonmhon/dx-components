@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { GlobalStyles } from '../global-styles';
 
@@ -7,6 +8,9 @@ import { GlobalStyles } from '../global-styles';
 export class DxButton extends LitElement {
   @property()
   type?: string = 'button';
+
+  @property({ attribute: 'outline', reflect: true })
+  outline?: boolean | undefined = undefined;
 
   static override styles = [
     GlobalStyles,
@@ -18,7 +22,7 @@ export class DxButton extends LitElement {
       button {
         background-color: var(--dx-button-bg);
         border: solid 1px transparent;
-        border-radius: 2rem;
+        border-radius: var(--dx-button-border-radius);
 
         color: var(--dx-button-text);
         margin-right: 1px;
@@ -31,11 +35,17 @@ export class DxButton extends LitElement {
 
       button:focus,
       button:hover {
-        box-shadow: 0 0 0 3px var(--dx-outline-color);
+        box-shadow: 0 0 0 2px var(--dx-outline-color);
       }
 
       button:hover {
         background-color: var(--dx-button-bg-hover);
+      }
+
+      :host([outline]) button {
+        background-color: var(--dx-button-outline-bg);
+        color: var(--dx-button-outline-text);
+        border-color: var(--dx-button-outline-border=color);
       }
     `,
   ];

@@ -18,10 +18,11 @@ export class DxMessageBlock extends LitElement {
       [data-type] {
         display: flex;
         position: relative;
-        padding: 4px 4px 4px 8px;
+        padding: 8px 8px 8px 12px;
         margin-bottom: 1px;
         font-size: 0.75rem;
-        border: solid 1px currentColor;
+        border: solid 1px var(--dx-message-border-color);
+        border-radius: var(--dx-message-border-radius);
       }
       [data-type]::before {
         position: absolute;

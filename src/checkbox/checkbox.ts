@@ -74,7 +74,7 @@ export class DxCheckbox extends LitElement {
       }
 
       input:focus + .control {
-        box-shadow: 0 0 0 3px var(--dx-outline-color);
+        box-shadow: 0 0 0 2px var(--dx-outline-color);
       }
     `,
   ];
