@@ -11,10 +11,13 @@ html[data-dx-theme="dark"] {
 
 body {
   font-size: var(--dx-font-size);
-  color: var( --dx-font-color);
+  color: var(--dx-font-color);
   line-height: var(--dx-line-height);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
   background-color: var(--dx-document-background);
+
+  transition-property: background, color;
+  transition-duration: .25s;
 }
 
 *,
@@ -48,11 +51,6 @@ img {
   height: auto;
 }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 section {
   margin-bottom: 3rem;
 }
@@ -64,11 +62,32 @@ h1 {
 
 h2 {
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
-  padding: 16px;
-  background-color: var( --header-bg-color);
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  background-color: var(--header-bg-color);
+  transition-property: background, color;
+  transition-duration: .25s;
+  z-index: 1001;
+}
+
+.header a {
+  color: var(--dx-font-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+
+.demo-container {
+  max-width: 600px;
+  margin: 0 auto;
+  z-index: 1000;
 }

@@ -26,6 +26,7 @@ export class DxCheckbox extends LitElement {
 
       .control {
         position: relative;
+        margin-top: 2px;
 
         display: inline-flex;
         flex: 0 0 auto;

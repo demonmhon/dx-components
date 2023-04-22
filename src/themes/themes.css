@@ -8,10 +8,12 @@
 
   --dx-component-font-size: 1rem;
   --dx-component-line-height: 1.2;
+  --dx-component-border-color: #cccccc;
 
   --dx-space-xs: 2px;
-  --dx-space-m: 5px;
-  --dx-space-l: 10px;
+  --dx-space-s: 5px;
+  --dx-space-m: 8px;
+  --dx-space-l: 12px;
   --dx-space-xl: 16px;
 
   --dx-transition: 0.5s;
@@ -53,8 +55,7 @@
   --dx-tag-text: #ffffff;
 }
 
-[data-dx-theme='light'] {
-}
+[data-dx-theme='light'] {}
 
 [data-dx-theme='dark'] {
   --dx-font-color: #aaaaaa;

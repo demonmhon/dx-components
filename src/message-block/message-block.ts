@@ -18,7 +18,8 @@ export class DxMessageBlock extends LitElement {
       [data-type] {
         display: flex;
         position: relative;
-        padding: 8px 8px 8px 12px;
+        padding: var(--dx-space-m);
+        padding-left: calc(var(--dx-space-m) + 4px);
         margin-bottom: 1px;
         font-size: 0.75rem;
         border: solid 1px var(--dx-message-border-color);
