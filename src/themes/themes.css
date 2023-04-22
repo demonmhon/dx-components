@@ -8,7 +8,6 @@
 
   --dx-component-font-size: 1rem;
   --dx-component-line-height: 1.2;
-  --dx-component-border-color: #cccccc;
 
   --dx-space-xs: 2px;
   --dx-space-s: 5px;
@@ -27,7 +26,7 @@
   --dx-error-color: #999999;
   --dx-link-color: #4f83cc;
   --dx-link-hover-color: #4f83cc;
-  --dx-border-color: #666666;
+  --dx-border-color: #cccccc;
   --dx-outline-color: rgba(102, 102, 102, 0.25);
 
   --dx-button-border-radius: 3px;
@@ -35,8 +34,9 @@
   --dx-button-bg-hover: #1a1a1a;
   --dx-button-text: #ffffff;
   --dx-button-outline-bg: transparent;
-  --dx-button-outline-text: #333333;
-  --dx-button-outline-border-color: #cccccc;
+
+  --dx-input-bg: transparent;
+  --dx-input-border-radius: 3px;
 
   --dx-breadcrumb-separator: '/';
 
@@ -45,7 +45,6 @@
   --dx-checkbox-img: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjIwIDYgOSAxNyA0IDEyIj48L3BvbHlsaW5lPjwvc3ZnPg==');
 
   --dx-message-border-radius: 3px;
-  --dx-message-border-color: #cccccc;
   --dx-message-icon-size: 1.4em;
   --dx-message-info-icon: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPiA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+IDxsaW5lIHgxPSIxMiIgeTE9IjE2IiB4Mj0iMTIiIHkyPSIxMiI+PC9saW5lPiA8bGluZSB4MT0iMTIiIHkxPSI4IiB4Mj0iMTIuMDEiIHkyPSI4Ij48L2xpbmU+IDwvc3ZnPg==');
   --dx-message-warn-icon:  url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIj48L2NpcmNsZT48bGluZSB4MT0iMTUiIHkxPSI5IiB4Mj0iOSIgeTI9IjE1Ij48L2xpbmU+PGxpbmUgeDE9IjkiIHkxPSI5IiB4Mj0iMTUiIHkyPSIxNSI+PC9saW5lPjwvc3ZnPg==');
@@ -55,15 +54,11 @@
   --dx-tag-text: #ffffff;
 }
 
-[data-dx-theme='light'] {}
-
 [data-dx-theme='dark'] {
   --dx-font-color: #aaaaaa;
   --dx-document-background: #222222;
+
+  --dx-border-color: #444444;
   
   --dx-button-outline-bg: transparent;
-  --dx-button-outline-text: #ffffff;
-  --dx-button-outline-border-color: #444444;
-
-  --dx-message-border-color: #444444;
 }

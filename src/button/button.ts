@@ -30,6 +30,7 @@ export class DxButton extends LitElement {
 
         transition-duration: var(--dx-transition-fastest);
         transition-property: background-color box-shadow;
+        cursor: pointer;
       }
 
       button:focus,
@@ -43,8 +44,8 @@ export class DxButton extends LitElement {
 
       :host([outline]) button {
         background-color: var(--dx-button-outline-bg);
-        color: var(--dx-button-outline-text);
-        border-color: var(--dx-button-outline-border-color);
+        color: var(--dx-font-color);
+        border-color: var(--dx-border-color);
       }
     `,
   ];

@@ -29,7 +29,7 @@ export class DxBreadcrumb extends LitElement {
 
       li:not(:first-child)::before {
         display: inline-block;
-        margin: 0 var(--dx-space-m);
+        margin: 0 var(--dx-space-s);
 
         content: var(--dx-breadcrumb-separator);
       }

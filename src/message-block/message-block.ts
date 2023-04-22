@@ -22,7 +22,7 @@ export class DxMessageBlock extends LitElement {
         padding-left: calc(var(--dx-space-m) + 4px);
         margin-bottom: 1px;
         font-size: 0.75rem;
-        border: solid 1px var(--dx-message-border-color);
+        border: solid 1px var(--dx-border-color);
         border-radius: var(--dx-message-border-radius);
       }
       [data-type]::before {
