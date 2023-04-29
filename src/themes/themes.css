@@ -52,6 +52,12 @@
 
   --dx-tag-bg: #333333;
   --dx-tag-text: #ffffff;
+
+  --dx-toggle-button-bg: #333333;
+  --dx-toggle-button-bg-hover: #1a1a1a;
+  --dx-toggle-width: 2.5rem;
+  --dx-toggle-size: 1.5em;
+  --dx-toggle-border-radius: 3rem;
 }
 
 [data-dx-theme='dark'] {
@@ -61,4 +67,7 @@
   --dx-border-color: #444444;
   
   --dx-button-outline-bg: transparent;
+
+  --dx-toggle-button-bg: #aaaaaa;
+  --dx-toggle-button-bg-hover: #ffffff;
 }

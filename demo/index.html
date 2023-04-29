@@ -70,6 +70,17 @@
       </div>
     </section>
 
+    <section class="component component-dx-checkbox">
+      <h2>DX Toggle</h2>
+      <div>
+        <dx-toggle id="dx-toggle-1"></dx-toggle>
+        <script>
+          var dxtg = document.getElementById('dx-toggle-1')
+          dxtg.onChange = (e) => console.log(`Toggle: ${e.target.checked}`)
+        </script>
+      </div>
+    </section>
+
     <section class="component component-dx-message-block">
       <h2>DX Message Block</h2>
       <dx-message-block>This is an info block (default)</dx-message-block>
