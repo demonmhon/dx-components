@@ -9,9 +9,19 @@ export class DxCheckbox extends LitElement {
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (_e: Event) => {};
 
+  @property({ attribute: 'disabled', type: Boolean })
+  disabled = false;
+
+  @property({ attribute: 'checked', type: Boolean })
+  checked = false;
+
   static override styles = [
     GlobalStyles,
     css`
+      :host([disabled]) {
+        opacity: var(--disable-opacity-state);
+      }
+
       label {
         display: inline-flex;
         box-sizing: border-box;
@@ -87,7 +97,12 @@ export class DxCheckbox extends LitElement {
   override render() {
     return html`
       <label>
-        <input type="checkbox" @click=${this._onChange} />
+        <input
+          type="checkbox"
+          @click=${this._onChange}
+          ?disabled=${this.disabled}
+          ?checked=${this.checked}
+        />
         <span class="control"></span>
         <span class="label"><slot></slot></span>
       </label>

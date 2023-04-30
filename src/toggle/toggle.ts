@@ -9,12 +9,21 @@ export class DxToggle extends LitElement {
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (_e: Event) => {};
 
+  @property({ attribute: 'disabled', type: Boolean })
+  disabled = false;
+
+  @property({ attribute: 'checked', type: Boolean })
+  checked = false;
+
   static override styles = [
     GlobalStyles,
     css`
+      :host([disabled]) {
+        opacity: var(--disable-opacity-state);
+      }
+
       label {
-        display: inline-flex;
-        box-sizing: border-box;
+        display: inline-block;
       }
 
       input {
@@ -25,10 +34,13 @@ export class DxToggle extends LitElement {
       }
 
       .control {
+        display: inline-flex;
         position: relative;
 
         width: var(--dx-toggle-width);
-        height: var(--dx-toggle-size);
+        height: calc(
+          var(--dx-toggle-button-size) + calc(var(--dx-toggle-space) * 2)
+        );
         overflow: hidden;
 
         vertical-align: middle;
@@ -42,12 +54,27 @@ export class DxToggle extends LitElement {
 
       .control::before {
         position: absolute;
+        width: 3px;
+        height: calc(var(--dx-toggle-button-size) / 1.5);
         top: 50%;
-        left: 3px;
-
+        left: calc(calc(var(--dx-toggle-button-size) / 2) + var(--dx-toggle-space));
         display: block;
-        width: var(--dx-checkbox-size);
-        height: var(--dx-checkbox-size);
+        border-radius: 3px;
+        transform: translate(-50%, -50%);
+
+        background-color: var(--dx-toggle-active-bg);
+        content: '';
+      }
+
+      .control::after {
+        position: absolute;
+        top: 50%;
+        left: var(--dx-toggle-space);
+
+        display: inline-flex;
+        position: relative;
+        width: var(--dx-toggle-button-size);
+        height: var(--dx-toggle-button-size);
         border-radius: var(--dx-toggle-border-radius);
 
         background-color: var(--dx-toggle-button-bg);
@@ -58,21 +85,19 @@ export class DxToggle extends LitElement {
         transition-property: left;
       }
 
-      .label {
-        flex: 1;
-        padding-left: var(--dx-space-m);
-      }
-
-      input:checked + .control::before {
-        left: calc(calc(100% - var(--dx-checkbox-size)) - 3px);
+      input:checked + .control::after {
+        left: calc(
+          calc(100% - var(--dx-toggle-button-size)) -
+            calc(var(--dx-toggle-space))
+        );
       }
 
       input:focus + .control {
         box-shadow: 0 0 0 2px var(--dx-outline-color);
       }
 
-      input:hover + .control::before,
-      input:focus + .control::before {
+      input:hover + .control::after,
+      input:focus + .control::after {
         background-color: var(--dx-toggle-button-bg-hover);
       }
     `,
@@ -85,9 +110,13 @@ export class DxToggle extends LitElement {
   override render() {
     return html`
       <label>
-        <input type="checkbox" @click=${this._onChange} />
+        <input
+          type="checkbox"
+          @click=${this._onChange}
+          ?disabled=${this.disabled}
+          ?checked=${this.checked}
+        />
         <span class="control"></span>
-        <span class="label"><slot></slot></span>
       </label>
     `;
   }

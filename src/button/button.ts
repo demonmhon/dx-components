@@ -18,6 +18,10 @@ export class DxButton extends LitElement {
         display: inline-block;
       }
 
+      :host([disabled]) {
+        opacity: var(--disable-opacity-state);
+      }
+
       button {
         background-color: var(--dx-button-bg);
         border: solid 1px transparent;

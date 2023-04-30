@@ -5,6 +5,7 @@
   --dx-line-height: 1.4;
   --dx-font-color: #111111;
   --dx-document-background: #ffffff;
+  --disable-opacity-state: 0.6;
 
   --dx-component-font-size: 1rem;
   --dx-component-line-height: 1.2;
@@ -55,8 +56,10 @@
 
   --dx-toggle-button-bg: #333333;
   --dx-toggle-button-bg-hover: #1a1a1a;
+  --dx-toggle-active-bg: #aaaaaa;
+  --dx-toggle-button-size: 0.9em;
   --dx-toggle-width: 2.5rem;
-  --dx-toggle-size: 1.5em;
+  --dx-toggle-space: 3px;
   --dx-toggle-border-radius: 3rem;
 }
 

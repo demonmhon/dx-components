@@ -22,6 +22,7 @@
       <h2>DX Button</h2>
       <dx-button>DX Button</dx-button>
       <dx-button outline>DX Button outline</dx-button>
+      <dx-button disabled>Disabled</dx-button>
     </section>
 
     <section class="component component-dx-breadcrumb">
@@ -73,7 +74,14 @@
     <section class="component component-dx-checkbox">
       <h2>DX Toggle</h2>
       <div>
+        <dx-toggle></dx-toggle>
+        <dx-toggle checked></dx-toggle>
+        <dx-toggle disabled></dx-toggle>
+        <dx-toggle checked disabled></dx-toggle>
+      </div>
+      <div style="display:flex;align-content:center;">
         <dx-toggle id="dx-toggle-1"></dx-toggle>
+        <span style="margin-left:20px">Auto update</span>
         <script>
           var dxtg = document.getElementById('dx-toggle-1')
           dxtg.onChange = (e) => console.log(`Toggle: ${e.target.checked}`)
