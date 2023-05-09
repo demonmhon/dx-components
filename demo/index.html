@@ -74,14 +74,13 @@
     <section class="component component-dx-checkbox">
       <h2>DX Toggle</h2>
       <div>
-        <dx-toggle></dx-toggle>
-        <dx-toggle checked></dx-toggle>
-        <dx-toggle disabled></dx-toggle>
-        <dx-toggle checked disabled></dx-toggle>
+        <div><dx-toggle></dx-toggle> Normal</div>
+        <div><dx-toggle checked></dx-toggle> Checked</div>
+        <div><dx-toggle disabled></dx-toggle> Disabled</div>
+        <div><dx-toggle checked disabled></dx-toggle>Checked and disabled</div>
       </div>
       <div style="display:flex;align-content:center;">
-        <dx-toggle id="dx-toggle-1"></dx-toggle>
-        <span style="margin-left:20px">Auto update</span>
+        <div><dx-toggle id="dx-toggle-1"></dx-toggle> See console for onChange()</div>
         <script>
           var dxtg = document.getElementById('dx-toggle-1')
           dxtg.onChange = (e) => console.log(`Toggle: ${e.target.checked}`)

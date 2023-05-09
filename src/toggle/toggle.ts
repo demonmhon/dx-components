@@ -54,10 +54,10 @@ export class DxToggle extends LitElement {
 
       .control::before {
         position: absolute;
-        width: 3px;
+        width: 2px;
         height: calc(var(--dx-toggle-button-size) / 1.5);
         top: 50%;
-        left: calc(calc(var(--dx-toggle-button-size) / 2) + var(--dx-toggle-space));
+        left: calc(calc(var(--dx-toggle-button-size) / 2) + var(--dx-toggle-space) + 1px);
         display: block;
         border-radius: 3px;
         transform: translate(-50%, -50%);
