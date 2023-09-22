@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { GlobalStyles } from '../global-styles';
@@ -10,6 +10,9 @@ export class DxButton extends LitElement {
 
   @property({ attribute: 'outline', reflect: true })
   outline?: boolean | undefined = undefined;
+
+  @property({ type: Boolean, reflect: true })
+  disabled?: boolean | undefined = undefined;
 
   static override styles = [
     GlobalStyles,
@@ -60,5 +63,11 @@ export class DxButton extends LitElement {
 
   override render() {
     return html`<button @click="${this.onClick}"><slot></slot></button>`;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'dx-button': DxButton;
   }
 }
