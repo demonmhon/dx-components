@@ -53,15 +53,12 @@ export class DxToggle extends LitElement {
       }
 
       .control::before {
+        display: none;
         position: absolute;
-        width: 2px;
-        height: calc(var(--dx-toggle-button-size) / 1.5);
-        top: 50%;
-        left: calc(calc(var(--dx-toggle-button-size) / 2) + var(--dx-toggle-space) + 1px);
-        display: block;
-        border-radius: 3px;
-        transform: translate(-50%, -50%);
-
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         background-color: var(--dx-toggle-active-bg);
         content: '';
       }
@@ -83,6 +80,10 @@ export class DxToggle extends LitElement {
 
         transition-duration: var(--dx-transition-fastest);
         transition-property: left;
+      }
+
+      input:checked + .control::before {
+        display: block;
       }
 
       input:checked + .control::after {

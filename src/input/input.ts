@@ -1,10 +1,18 @@
 import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import { GlobalStyles } from '../global-styles';
 
 @customElement('dx-input')
 export class DxInput extends LitElement {
+  @property()
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  onKeyup = (_e: Event) => {};
+
+  @property()
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  onChange = (_e: Event) => {};
+
   static override styles = [
     GlobalStyles,
     css`
@@ -29,9 +37,17 @@ export class DxInput extends LitElement {
     `,
   ];
 
+  private _onKeyup(e: Event): void {
+    this.onKeyup(e);
+  }
+
+  private _onChange(e: Event): void {
+    this.onChange(e);
+  }
+
   override render() {
     return html`
-      <input type="text" />
+      <input type="text" @keyup="${this._onKeyup}" @change"${this._onChange}" />
     `;
   }
 }

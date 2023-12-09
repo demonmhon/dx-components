@@ -54,6 +54,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
+    "lodash": "^4.17.21",
     "prettier": "^2.8.7",
     "rimraf": "^5.0.0",
     "rollup": "^2.79.1",

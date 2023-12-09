@@ -14,6 +14,10 @@ export class DxButton extends LitElement {
   @property({ type: Boolean, reflect: true })
   disabled?: boolean | undefined = undefined;
 
+  @property()
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  onClick = (_e: Event) => {};
+
   static override styles = [
     GlobalStyles,
     css`
@@ -57,12 +61,13 @@ export class DxButton extends LitElement {
     `,
   ];
 
-  private onClick(e: Event): void {
+  private _onClick(e: Event): void {
     e.stopPropagation();
+    this.onClick(e);
   }
 
   override render() {
-    return html`<button @click="${this.onClick}"><slot></slot></button>`;
+    return html`<button @click="${this._onClick}"><slot></slot></button>`;
   }
 }
 

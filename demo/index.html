@@ -20,9 +20,13 @@
   <div class="demo-container">
     <section class="component component-dx-button">
       <h2>DX Button</h2>
-      <dx-button>DX Button</dx-button>
+      <dx-button id="dx-button-1">DX Button</dx-button>
       <dx-button outline>DX Button outline</dx-button>
       <dx-button disabled>Disabled</dx-button>
+      <script>
+        var dxbtn1 = document.getElementById('dx-button-1')
+        dxbtn1.onClick = (e) => console.log(`#dx-button-1 clicked`)
+      </script>
     </section>
 
     <section class="component component-dx-breadcrumb">
@@ -51,8 +55,19 @@
 
     <section class="component component-dx-input">
       <h2>DX Input</h2>
-      <div>
+      <div class="input-field">
         <dx-input></dx-input>
+      </div>
+      <div class="input-field">
+        <dx-input id="dx-input-1"></dx-input>
+        <div>Input value: <span id="dx-input-1-value"></span></div>
+        <script>
+          var dxinp1 = document.getElementById('dx-input-1')
+          var dxinp1re = document.getElementById('dx-input-1-value')
+          dxinp1.onKeyup = (e) => {
+            dxinp1re.innerText = e.target.value
+          }
+        </script>
       </div>
     </section>
 
@@ -82,8 +97,8 @@
       <div style="display:flex;align-content:center;">
         <div><dx-toggle id="dx-toggle-1"></dx-toggle> See console for onChange()</div>
         <script>
-          var dxtg = document.getElementById('dx-toggle-1')
-          dxtg.onChange = (e) => console.log(`Toggle: ${e.target.checked}`)
+          var dxbtn1 = document.getElementById('dx-toggle-1')
+          dxbtn1.onChange = (e) => console.log(`Toggle: ${e.target.checked}`)
         </script>
       </div>
     </section>
