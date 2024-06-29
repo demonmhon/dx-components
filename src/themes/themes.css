@@ -1,12 +1,4 @@
-:root,
-[data-dx-theme='light'],
-[data-dx-theme='dark'] {
-  --dx-font-size: 14px;
-  --dx-line-height: 1.4;
-  --dx-font-color: #111111;
-  --dx-document-background: #ffffff;
-  --disable-opacity-state: 0.6;
-
+:root {
   --dx-component-font-size: 1rem;
   --dx-component-line-height: 1.2;
 
@@ -21,6 +13,15 @@
   --dx-transition-fastest: 0.15s;
   --dx-transition-slower: 0.7s;
   --dx-transition-slowest: 0.85s;
+}
+:root,
+[data-dx-theme='light'],
+[data-dx-theme='dark'] {
+  --dx-font-size: 14px;
+  --dx-line-height: 1.4;
+  --dx-font-color: #111111;
+  --dx-document-background: #ffffff;
+  --disable-opacity-state: 0.6;
 
   --dx-info-color: #808080;
   --dx-warning-color: #666666;

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": ">=16"
+    "node": ">=16",
+    "npm": ">=8"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -14,7 +15,8 @@
     "test": "npm run build && npm run test:dev",
     "test:dev": "wtr --coverage",
     "test:watch": "wtr --watch",
-    "dev": "rimraf dist && rollup -c rollup.config.mjs --watch",
+    "dev": "concurrently -n rollup,server \"npm run dev:rollup\" \"npm run dev:server\"",
+    "dev:rollup": "rimraf dist && rollup -c rollup.config.mjs --watch",
     "dev:server": "web-dev-server",
     "build": "rimraf dist && rollup -c rollup.config.mjs",
     "build:tsc": "tsc",
@@ -51,7 +53,7 @@
     "@web/rollup-plugin-copy": "^0.3.0",
     "@web/test-runner": "^0.15.3",
     "@web/test-runner-playwright": "^0.10.1",
-    "concurrently": "^8.0.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.38.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
