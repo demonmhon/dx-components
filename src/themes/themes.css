@@ -30,6 +30,9 @@
   --dx-link-hover-color: #4f83cc;
   --dx-border-color: #aaaaaa;
   --dx-outline-color: rgba(102, 102, 102, 0.25);
+  --dx-code-bg: #eeeeee;
+  --dx-code-color: #333333;
+  --dx-code-border-color: #bababa;
 
   --dx-button-border-radius: 3px;
   --dx-button-bg: #333333;
@@ -69,6 +72,10 @@
   --dx-document-background: #222222;
 
   --dx-border-color: #444444;
+
+  --dx-code-bg: #444444;
+  --dx-code-color: #aaaaaa;
+  --dx-code-border-color: #666666;
   
   --dx-button-outline-bg: transparent;
 
