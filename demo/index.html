@@ -87,6 +87,44 @@
     </section>
 
     <section class="component component-dx-checkbox">
+      <h2>DX Dialog</h2>
+      <div>
+        <dx-button id="open-dialog">Open Dialog</dx-button>
+        <dx-button id="open-dialog-modal">Open Dialog Model</dx-button>
+        <dx-dialog id="dx-dialog-1">
+          <p>This is dialog content.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt nisi non gravida
+            hendrerit. Donec et nibh eu nibh porttitor facilisis eget vel ligula. Cras sit amet libero et nunc iaculis
+            facilisis. Nam semper lacus non ipsum commodo pretium. Aliquam dapibus mauris ac pellentesque fringilla.
+          </p>
+          <div slot="footer" >
+            <dx-button id="close-dialog-1">OK</dx-button>
+            <dx-button outline id="close-dialog-2">Close</dx-button>
+          </div>
+        </dx-dialog>
+        <script>
+          var dialog = document.getElementById('dx-dialog-1')
+
+          var openBtn = document.getElementById('open-dialog')
+          var openModal = document.getElementById('open-dialog-modal')
+          var closeBtn1 = document.getElementById('close-dialog-1')
+          var closeBtn2 = document.getElementById('close-dialog-2')
+
+          openBtn.onClick = (e) => {
+            dialog.removeAttribute('modal')
+            dialog.setAttribute('shown', 'true')
+          }
+          openModal.onClick = (e) => {
+            dialog.setAttribute('modal', 'true')
+            dialog.setAttribute('shown', 'true')
+          }
+          closeBtn1.onClick = (e) => dialog.removeAttribute('shown')
+          closeBtn2.onClick = (e) => dialog.removeAttribute('shown')
+        </script>
+      </div>
+    </section>
+
+    <section class="component component-dx-checkbox">
       <h2>DX Toggle</h2>
       <div>
         <div><dx-toggle></dx-toggle> Normal</div>

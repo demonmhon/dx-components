@@ -1,78 +1,138 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 
 import { GlobalStyles } from '../global-styles';
 
 @customElement('dx-dialog')
 export class DxDialog extends LitElement {
-  private isShown: boolean = false;
+  @query('.dialog') private _dialog!: HTMLElement;
 
   @property({ type: Boolean, reflect: true })
-  'shown'?: boolean = false;
+  shown = false;
 
-  @property({ attribute: 'modal', reflect: true })
-  modal?: boolean | undefined = undefined;
+  @property({ type: Boolean, reflect: true })
+  modal = false;
 
-  @property()
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  onClose = (_e: Event) => { };
-  show = () => {
-    console.log('Dialog will be shown')
-    this.isShown = true;
-  }
-
-  // private getBrowserScrollbarSize() {
-  //   return window.innerWidth - document.documentElement.clientWidth;
-  // };
-
-  private _onClose(_e: Event): void {
-    return !this.modal ? this.onClose(_e) : false;
-  }
-
-  private _onKeyDown(e: KeyboardEvent): void {
-    if (e.keyCode === 27) {
-      // 
-    }
-  }
+  private _previouslyFocusedElement: HTMLElement | null = null;
 
   static override styles = [
     GlobalStyles,
     css`
-      :host .dialog {
+      :host {
+        display: none;
+      }
+
+      :host([shown]) {
         display: block;
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 100;
-        height: 0;
-        overflow: hidden;
+        z-index: 10000;
+      }
+
+      .dialog {
+        height: 100%;
         outline: none;
       }
 
-      :host([show="true]) .dialog {
-        height: 100%;
+      .overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
       }
 
-      .dialog[data-show="true"] {
-        border: solid 50px red;
+      .content {
+        background-color: var(--dx-background-color, white);
+        padding: var(--dx-space-xl);
+        border-radius: var(--dx-dialog-border-radius, 4px);
+        border: solid 1px var(--dx-border-color);
+        min-width: 60rem;
+        max-width: calc(100vw - calc(var(--dx-space-xl) * 4));
+        max-height: 80vh;
+        overflow: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      }
+
+      footer {
+        margin-top: var(--dx-space-m);
+        padding-top: var(--dx-space-m);
+        border-top: solid 1px var(--dx-border-color);
+        text-align: right;
+      }
+
+      @media (min-width: 768px) {
+        max-width: 60vw;
       }
     `,
   ];
+
+  override updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('shown')) {
+      if (this.shown) {
+        this._previouslyFocusedElement = document.activeElement as HTMLElement;
+        // wait for render before focusing
+        this.updateComplete.then(() => {
+          this._dialog.focus();
+        });
+      } else if (this._previouslyFocusedElement) {
+        this._previouslyFocusedElement.focus();
+        this._previouslyFocusedElement = null;
+      }
+    }
+  }
+
+  private _handleOverlayClick(): void {
+    if (!this.modal) {
+      this.close();
+    }
+  }
+
+  private _handleKeyDown(e: KeyboardEvent): void {
+    if (e.key === 'Escape' && !this.modal) {
+      this.close();
+    }
+  }
+
+  /**
+   * Closes the dialog.
+   */
+  public close(): void {
+    if (!this.shown) {
+      return;
+    }
+    this.shown = false;
+    this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+  }
 
   override render() {
     return html`
       <div
         class="dialog"
-        tabIndex="0"
+        tabindex="-1"
         role="dialog"
-        shown="${(this.isShown ? 'true' : 'false')}"
-        @keydown="${this._onKeyDown}"
+        aria-modal="${this.modal}"
+        aria-hidden="${!this.shown}"
+        @keydown="${this._handleKeyDown}"
       >
-        <div @click="${this._onClose}">
-          <div @click="${(e: Event) => e.stopPropagation()}">
-            <slot></slot>
+        <div class="overlay" @click="${this._handleOverlayClick}">
+          <div class="content" @click="${(e: Event) => e.stopPropagation()}" role="document">
+            <header>
+                <slot name="title"></slot>
+            </header>  
+            <section>
+              <slot></slot>
+            </section>
+            <footer>
+              <slot name="footer"></slot>
+            </footer>
           </div>
         </div>
       </div>
