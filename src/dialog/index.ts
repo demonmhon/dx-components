@@ -1,0 +1,1 @@
+export { DxDialog } from './dialog';
